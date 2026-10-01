@@ -1,0 +1,17 @@
+#!/bin/bash
+echo "=== POST-COMMIT ==="
+echo "Запуск статического анализа cppcheck..."
+
+if command -v cppcheck >/dev/null 2>&1; then
+    cppcheck --enable=warning,style,performance,portability --error-exitcode=1 src
+    status=$?
+    if [ $status -eq 0 ]; then
+        echo "cppcheck: ошибок не обнаружено."
+    else
+        echo "cppcheck: обнаружены проблемы."
+    fi
+    exit $status
+else
+    echo "cppcheck не найден. Установите cppcheck и повторите commit."
+    exit 1
+fi

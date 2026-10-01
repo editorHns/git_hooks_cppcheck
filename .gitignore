@@ -1,0 +1,4 @@
+# Build files
+*.o
+*.out
+build/

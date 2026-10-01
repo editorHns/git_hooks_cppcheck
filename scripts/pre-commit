@@ -1,0 +1,6 @@
+#!/bin/bash
+echo "=== PRE-COMMIT ==="
+echo "Последние три изменения:"
+git log -3 --oneline --decorate
+echo "=================="
+exit 0
